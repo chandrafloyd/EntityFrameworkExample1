@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "CustomersPage";
+}
+
+
+@*step 4 - create search form to get customers*@
+<br /><br />
+<form action="/Home/GetCustomersByCountry" method="get">
+    @*GetCustomersByCountry is the method in the controller -- go define the method now*@
+
+
+    <select name="Country">
+        @*we can use the select not bc we connected the database but because it's an html option that allows to create a dropdow*@
+        <option value="Choose One">Choose One</option>
+        <option value="Wakanda">Wakanda</option>
+        <option value="Germany">Germany</option>
+        <option value="Uk">UK</option>
+        <option value="France">France</option>
+        <option value="Brazil">Brazil</option>
+        <option value="USA">USA</option>
+
+        @*challenge: consider how to make this populate from the list instead of hard coded*@
+
+    </select>
+    <input type="submit" value="Search" />
+
+
+</form>
+
+
+@* search by company name *@
+<br /><br />
+      <form action="/Home/GetCustomersByCompanyName" method="get">
+          <input type="text" name="CompanyName" placeholder="Company Name">
+          <input type="submit" value="Search" />
+      </form>
+
+<br /><br />
+
+<table class="table">
+
+    <tr>
+        <th>CustomerID</th>
+        <th>Company Name</th>
+        <th>City</th>
+        <th>Country</th>
+        <th>Orders</th>
+        <th>Delete</th>
+        <th>Update</th>
+    </tr>
+
+
+    @*Step 3 -- make the view that will show the data called on the Customers Page. The viewbag makes it display. *@
+    @* this for loop will populate the list with each record that we pulled from the database. *@
+    @*use the @ so that the razor will display one record at a time. Data can be shown in multiple ways*@
+
+    @foreach (var C in ViewBag.CustomersData)
+    {
+    <tr>
+        <td> @C.CustomerID</td>
+        <td>@C.CompanyName</td>
+        <td>@C.City</td>
+        <td>@C.Country</td>
+        <td><a href="/Home/GetOrdersbyCID?CustomerID=@C.CustomerID">Orders</a></td>  @*must have corresponding action called GetOrdersbyCID*@
+        <td><a href="/Home/DeleteOrdersbyCID?CustomerID=@C.CustomerID">Delete</a></td>  @*must have corresponding action called DeleteOrdersbyCID*@
+        <td><a href="/Home/UpdateCustomerbyCID?CustomerID=@C.CustomerID">Update</a></td>   @*must have corresponding action called UpdateCustomerbyCID*@
+
+        @* the ? means query. Q:What are getting orders by/How are we looking for orders? A:By CustomerID *@
+
+    </tr>
+    }
+
+
+</table>
+

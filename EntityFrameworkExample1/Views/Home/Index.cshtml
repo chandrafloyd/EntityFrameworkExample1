@@ -1,0 +1,77 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+@model EntityFrameworkExample1.Models.Customer
+@*this^^ tells the view to make this as an object*@
+
+
+@*BUILD THIS FORM FIRST*@
+@*use this form to collect data and send to the database*@
+<br /><br />
+<h3>Add New Customer</h3> <br /><br />
+<form action="/Home/AddNewCustomer" id = "Custform" onsubmit = "return Validate()" method="post">
+   
+    Customer ID:   <input type="text" name="CustomerID" /><br /><br /> @*the name is the field that corresponds in the Customer table of the database*@
+    Company Name:  <input type="text" name="CompanyName" /><br /><br />
+   
+    @*<input type="text" id =" Custform" placeholder="Add>" /> @*inputbox*@ @*not sure why I had this*@
+    <input type="submit"  value="submit" /><br /><br />  @*submit button*@
+
+</form>
+
+@*HOW TO ADD Client side VALIDATION
+    1. add an id to the form called custform and input so that JS can call it*@
+@*1b create the <script>*@
+<script>
+    //2. inside the script, create function called validation() and give it parameters
+    function validation() {
+
+
+        ////3 - one way to use this as validation
+        //console.log(document.getElementById("Custform").value);  //this goes to the custform and gets whatever was in the box
+        //return false;
+        //would need to make a new view (or use an existing view) in order to call it from the controller
+
+        ////3 - another way to validate: regex
+        var regExName = /^[a-zA-Z]{1,}$/;  //create a regex pattern
+        var regObject = {    //create an object to validate against the regex
+            name: document.getElementById("Custform").value,  //give it a property and give it a value by pointing at the id in the form and  getting the element by id
+
+        }
+        if (regExName.test(regObject.name))  //using the test function to check the name of wahtever is in the parameter and use a bool
+        {
+            return true;  //if it passes the regex, return true
+        }
+        else {
+            return false;
+        }
+
+        ////3- another way to use this as validation - create obect and properties
+        //var regObject{    //registration object
+        //    name: document.getElementById("Custform").value,
+        //    phone: document.getElementById("Custform").value,
+        ////    //name and phone the property i can now assign to the object called regObject
+        //}
+
+
+
+        ////3b update the form and add an "onsubmit = "return Validate()"" so that the function will run onclicking the submit button
+        ////4 now that I created regObject and assigned properties, I can access properties like regObject.name
+        ////4b can now set a condition that can be checked if true/false
+
+        //if (regObject.name == "")
+    //    //    //if field for object name is empty, return false. 
+    //        //form will NOT submit if false is returned; only if it returns true
+    //    {
+    //        console.log(document.getElementById("Custform").value); //added this so I could see the result
+    //        return false;
+    //    }
+
+    }
+</script>
+    
+@*NOW GO BUILD THE MODEL that will send this to the database *@
+@*built the  model and action in controller*@
+@*now how  do we tell the form to bundle this information as a customer? add the @model at the top*@

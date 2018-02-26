@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "CustomerDetails";
+}
+
+<h2>CustomerDetails</h2>
+
+@model EntityFrameworkExample1.Models.Customer    
+    @*         if I don't have this, I will reiceve 3 different variables in the view. the above says bundle it as an object called Customer
+        and we can now do stuff like Customer.CustomerID*@
+
+<form action="/Home/SaveCustomerChanges " method="post">  @*made up "savecustomerchanges" here; go build it as an action*@
+
+    CustomerID: <input type="text" name="CustomerID" disabled value="@ViewBag.CustomerToBeUpdated.CustomerID" /> <br /><br />  @*made it a readonly by making it disabled. can't change coID, but can change all the other info*@
+   <input type="hidden" name="CustomerID" value="@ViewBag.CustomerToBeUpdated.CustomerID" />
+
+    Company Name: <input type="text" name="CompanyName" value="@ViewBag.CustomerToBeUpdated.CompanyName" /> <br /><br />
+    City Name: <input type="text" name="City" value="@ViewBag.CustomerToBeUpdated.City" /> <br /><br />
+    <input type="submit"    value="Save Changes" />
+
+</form>
