@@ -7,12 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EntityFrameworkExample1.Models
+namespace Lab20_CoffeeShopWebApp.EntityFrameworkExample1.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;  //this was added by forcing the "required" field below
-    
     
     public partial class Customer
     {
@@ -22,16 +20,8 @@ namespace EntityFrameworkExample1.Models
             this.Orders = new HashSet<Order>();
         }
     
-        [Required]  //added this is called an attribute. got an error, clicked the choice to add the namespace above. this is client side validation
-        [StringLength(5)]
-        public string CustomerID { get; set; } //the CID field is now required and must be 5 chars. this is a form of validation that will apply everywhere the field is used
-
-
-        [Required]
+        public string CustomerID { get; set; }
         public string CompanyName { get; set; }
-
-
-
         public string ContactName { get; set; }
         public string ContactTitle { get; set; }
         public string Address { get; set; }
@@ -39,8 +29,6 @@ namespace EntityFrameworkExample1.Models
         public string Region { get; set; }
         public string PostalCode { get; set; }
         public string Country { get; set; }
-
-        //[RegularExpression("^\\d{10}$")] 
         public string Phone { get; set; }
         public string Fax { get; set; }
     

@@ -22,12 +22,12 @@
 </form>
 
 @*HOW TO ADD Client side VALIDATION
-    1. add an id to the form called custform and input so that JS can call it*@
+    1. add an id to the form called custform so that JS can call it*@
 @*1b create the <script>*@
+
 <script>
     //2. inside the script, create function called validation() and give it parameters
     function validation() {
-
 
         ////3 - one way to use this as validation
         //console.log(document.getElementById("Custform").value);  //this goes to the custform and gets whatever was in the box
@@ -36,8 +36,9 @@
 
         ////3 - another way to validate: regex
         var regExName = /^[a-zA-Z]{1,}$/;  //create a regex pattern
-        var regObject = {    //create an object to validate against the regex
-            name: document.getElementById("Custform").value,  //give it a property and give it a value by pointing at the id in the form and  getting the element by id
+        var regObject = {                  //create an object to validate against the regex
+            name: document.getElementById("Custform").value,
+                //give it a property and give it a value by pointing at the id in the form using get the element by id
 
         }
         if (regExName.test(regObject.name))  //using the test function to check the name of wahtever is in the parameter and use a bool
@@ -55,23 +56,22 @@
         ////    //name and phone the property i can now assign to the object called regObject
         //}
 
-
-
         ////3b update the form and add an "onsubmit = "return Validate()"" so that the function will run onclicking the submit button
+
         ////4 now that I created regObject and assigned properties, I can access properties like regObject.name
         ////4b can now set a condition that can be checked if true/false
 
         //if (regObject.name == "")
-    //    //    //if field for object name is empty, return false. 
-    //        //form will NOT submit if false is returned; only if it returns true
-    //    {
-    //        console.log(document.getElementById("Custform").value); //added this so I could see the result
-    //        return false;
-    //    }
+        //    //if field for object name is empty, return false. 
+        //        //form will NOT submit if false is returned; only if it returns true
+        //    {
+        //        console.log(document.getElementById("Custform").value); //added this so I could see the result
+        //        return false;
+        //    }
 
     }
 </script>
     
 @*NOW GO BUILD THE MODEL that will send this to the database *@
-@*built the  model and action in controller*@
-@*now how  do we tell the form to bundle this information as a customer? add the @model at the top*@
+@*build the action in controller*@
+@*now how do we tell the form to bundle this information as a customer? add the @model at the top*@

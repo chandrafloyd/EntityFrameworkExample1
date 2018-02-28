@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EntityFrameworkExample1.Models
+namespace Lab20_CoffeeShopWebApp.EntityFrameworkExample1.Models
 {
     using System;
     using System.Collections.Generic;

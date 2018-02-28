@@ -2,11 +2,6 @@
         ViewBag.Title = "OrderDetails";
     }*@
 
-@* 3/create the view based on the ation in the controller to display cust orders*@
-
-<br /><br />
-
-
 
 @*the order page is essentially a LIST, so we can loop through by index just like we can for any other list or array*@
 
@@ -22,9 +17,9 @@
     {
 
 
-        foreach (var o in ViewBag.CustomerOrders)  //declaring O as a temporary var here makes a generic object. 
-            //now can use it with .notation   o.
-        //the loop will print the results for each o (temporary variable declared just for this purpose)
+        foreach (var o in ViewBag.CustomerOrders)  //declaring O as a temporary var here makes a generic object.
+                                                   //now can use it with .notation   o.
+                                                   //the loop will print the results for each o (temporary variable declared just for this purpose)
 
         {
 
@@ -32,6 +27,7 @@
                 <td>@o.CustomerID</td>
                 <td>@o.OrderID</td>  @*this pulls the specific items from the order results*@
                 <td>@o.OrderDate</td>
+
             </tr>
         }
     }

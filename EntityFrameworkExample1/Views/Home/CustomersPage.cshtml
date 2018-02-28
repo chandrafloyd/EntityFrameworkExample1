@@ -10,18 +10,14 @@
     @*GetCustomersByCountry is the method in the controller -- go define the method now*@
 
 
-    <select name="Country">
-        @*we can use the select not bc we connected the database but because it's an html option that allows to create a dropdow*@
+    <select name="Country">  @* select makes a dropdown box *@
         <option value="Choose One">Choose One</option>
         <option value="Wakanda">Wakanda</option>
         <option value="Germany">Germany</option>
-        <option value="Uk">UK</option>
-        <option value="France">France</option>
         <option value="Brazil">Brazil</option>
         <option value="USA">USA</option>
 
         @*challenge: consider how to make this populate from the list instead of hard coded*@
-
     </select>
     <input type="submit" value="Search" />
 
@@ -35,9 +31,10 @@
           <input type="text" name="CompanyName" placeholder="Company Name">
           <input type="submit" value="Search" />
       </form>
-
 <br /><br />
 
+
+@* to display results in table *@
 <table class="table">
 
     <tr>
