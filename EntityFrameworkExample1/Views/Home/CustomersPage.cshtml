@@ -4,13 +4,14 @@
 }
 
 
-@*step 4 - create search form to get customers*@
+@*FORM*@
 <br /><br />
 <form action="/Home/GetCustomersByCountry" method="get">
     @*GetCustomersByCountry is the method in the controller -- go define the method now*@
 
 
-    <select name="Country">  @* select makes a dropdown box *@
+    <select name="Country">
+        @* select makes a dropdown box *@
         <option value="Choose One">Choose One</option>
         <option value="Wakanda">Wakanda</option>
         <option value="Germany">Germany</option>
@@ -24,17 +25,17 @@
 
 </form>
 
-
+@*FORM*@
 @* search by company name *@
 <br /><br />
-      <form action="/Home/GetCustomersByCompanyName" method="get">
-          <input type="text" name="CompanyName" placeholder="Company Name">
-          <input type="submit" value="Search" />
-      </form>
+<form action="/Home/GetCustomersByCompanyName" method="get">
+    <input type="text" name="CompanyName" placeholder="Company Name">
+    <input type="submit" value="Search" />
+</form>
 <br /><br />
 
 
-@* to display results in table *@
+@*TABLE TO HOLD DATA*@
 <table class="table">
 
     <tr>
@@ -54,18 +55,18 @@
 
     @foreach (var C in ViewBag.CustomersData)
     {
-    <tr>
-        <td> @C.CustomerID</td>
-        <td>@C.CompanyName</td>
-        <td>@C.City</td>
-        <td>@C.Country</td>
-        <td><a href="/Home/GetOrdersbyCID?CustomerID=@C.CustomerID">Orders</a></td>  @*must have corresponding action called GetOrdersbyCID*@
-        <td><a href="/Home/DeleteOrdersbyCID?CustomerID=@C.CustomerID">Delete</a></td>  @*must have corresponding action called DeleteOrdersbyCID*@
-        <td><a href="/Home/UpdateCustomerbyCID?CustomerID=@C.CustomerID">Update</a></td>   @*must have corresponding action called UpdateCustomerbyCID*@
+        <tr>
+            <td> @C.CustomerID</td>
+            <td>@C.CompanyName</td>
+            <td>@C.City</td>
+            <td>@C.Country</td>
+            <td><a href="/Home/GetOrdersbyCID?CustomerID=@C.CustomerID">Orders</a></td>  @*must have corresponding action called GetOrdersbyCID*@
+            <td><a href="/Home/DeleteOrdersbyCID?CustomerID=@C.CustomerID">Delete</a></td>  @*must have corresponding action called DeleteOrdersbyCID*@
+            <td><a href="/Home/UpdateCustomerbyCID?CustomerID=@C.CustomerID">Update</a></td>   @*must have corresponding action called UpdateCustomerbyCID*@
 
-        @* the ? means query. Q:What are getting orders by/How are we looking for orders? A:By CustomerID *@
+            @* the ? means query. Q:What are getting orders by/How are we looking for orders? A:By CustomerID *@
 
-    </tr>
+        </tr>
     }
 
 
